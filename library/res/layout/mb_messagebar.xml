@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mb__messageBar"
+    style="?attr/messageBarContainerStyle">
+
+    <TextView
+        android:id="@+id/mb__messageBarMessage"
+        style="?attr/messageBarTextStyle" />
+
+    <TextView
+        android:id="@+id/mb__messageBarButton"
+        style="?attr/messageBarButtonStyle" />
+</LinearLayout>

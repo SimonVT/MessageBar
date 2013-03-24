@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show message bar ..." />
+
+    <Button
+        android:id="@+id/withText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="With text" />
+
+    <Button
+        android:id="@+id/withTextAndButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="With text and button" />
+
+    <TextView
+        android:id="@+id/messageClickedTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
+
