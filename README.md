@@ -4,6 +4,11 @@ MessageBar
 An Android Toast replacement, similar to the one seen in the GMail app.
 
 
+Credits
+=======
+
+ * Roman Nurik for creating the [example][1] this library is based on.
+
 
 License
 =======
@@ -23,3 +28,6 @@ License
     limitations under the License.
 
 
+
+
+ [1]: https://code.google.com/p/romannurik-code/source/browse/#git%2Fmisc%2Fundobar
