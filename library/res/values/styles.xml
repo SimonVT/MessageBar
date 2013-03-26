@@ -11,10 +11,10 @@
         <item name="android:layout_marginRight">8dp</item>
         <item name="android:layout_marginBottom">16dp</item>
         <item name="android:orientation">horizontal</item>
-        <item name="android:background">@drawable/mb_messagebar_background</item>
+        <item name="android:background">@drawable/mb__messagebar_background</item>
         <item name="android:clickable">true</item>
         <item name="android:showDividers">middle</item>
-        <item name="android:divider">@drawable/mb_messagebar_divider</item>
+        <item name="android:divider">@drawable/mb__messagebar_divider</item>
         <item name="android:dividerPadding">10dp</item>
     </style>
 
@@ -35,7 +35,7 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:paddingLeft">16dp</item>
         <item name="android:paddingRight">16dp</item>
-        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:background">@drawable/mb__item_background_holo_dark</item>
         <item name="android:drawablePadding">12dp</item>
         <item name="android:gravity">center</item>
         <item name="android:textAppearance">?android:textAppearanceSmall</item>

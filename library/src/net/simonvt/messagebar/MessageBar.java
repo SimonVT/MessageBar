@@ -1,7 +1,5 @@
 package net.simonvt.messagebar;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,7 +7,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewPropertyAnimator;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.TextView;
 
 import java.util.LinkedList;
@@ -34,8 +33,6 @@ public class MessageBar {
 
     private TextView mButton;
 
-    private ViewPropertyAnimator mAnimator;
-
     private LinkedList<Message> mMessages = new LinkedList<Message>();
 
     private Message mCurrentMessage;
@@ -46,9 +43,13 @@ public class MessageBar {
 
     private Handler mHandler;
 
+    private AlphaAnimation mFadeInAnimation;
+
+    private AlphaAnimation mFadeOutAnimation;
+
     public MessageBar(Activity activity) {
         ViewGroup contianer = (ViewGroup) activity.findViewById(android.R.id.content);
-        View v = activity.getLayoutInflater().inflate(R.layout.mb_messagebar, contianer);
+        View v = activity.getLayoutInflater().inflate(R.layout.mb__messagebar, contianer);
         init(v);
     }
 
@@ -59,11 +60,35 @@ public class MessageBar {
     private void init(View v) {
         mContainer = v.findViewById(R.id.mb__messageBar);
         mContainer.setVisibility(View.GONE);
-        mContainer.setAlpha(0.0f);
         mTextView = (TextView) v.findViewById(R.id.mb__messageBarMessage);
         mButton = (TextView) v.findViewById(R.id.mb__messageBarButton);
         mButton.setOnClickListener(mButtonListener);
-        mAnimator = mContainer.animate();
+
+        mFadeInAnimation = new AlphaAnimation(0.0f, 1.0f);
+        mFadeOutAnimation = new AlphaAnimation(1.0f, 0.0f);
+        mFadeOutAnimation.setDuration(ANIMATION_DURATION);
+        mFadeOutAnimation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                Message nextMessage = mMessages.poll();
+
+                if (nextMessage != null) {
+                    show(nextMessage);
+                } else {
+                    mCurrentMessage = null;
+                    mContainer.setVisibility(View.GONE);
+                    mShowing = false;
+                }
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+            }
+        });
 
         mHandler = new Handler();
     }
@@ -108,10 +133,11 @@ public class MessageBar {
         }
 
         if (immediately) {
-            mContainer.setAlpha(1.0f);
+            mFadeInAnimation.setDuration(0);
         } else {
-            mAnimator.alpha(1.0f).setDuration(ANIMATION_DURATION).setListener(null);
+            mFadeInAnimation.setDuration(ANIMATION_DURATION);
         }
+        mContainer.startAnimation(mFadeInAnimation);
         mHandler.postDelayed(mHideRunnable, HIDE_DELAY);
     }
 
@@ -139,21 +165,7 @@ public class MessageBar {
     private Runnable mHideRunnable = new Runnable() {
         @Override
         public void run() {
-
-            mAnimator.alpha(0.0f).setDuration(ANIMATION_DURATION).setListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    Message nextMessage = mMessages.poll();
-
-                    if (nextMessage != null) {
-                        show(nextMessage);
-                    } else {
-                        mCurrentMessage = null;
-                        mContainer.setVisibility(View.GONE);
-                        mShowing = false;
-                    }
-                }
-            });
+            mContainer.startAnimation(mFadeOutAnimation);
         }
     };
 
