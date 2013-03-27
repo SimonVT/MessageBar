@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MessageBar" />
+
+    <style name="MessageBar.Container">
+        <item name="android:layout_width">400dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_gravity">bottom|center_horizontal</item>
+        <item name="android:layout_marginLeft">8dp</item>
+        <item name="android:layout_marginRight">8dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:background">@drawable/mb__messagebar_background</item>
+        <item name="android:clickable">true</item>
+        <item name="android:showDividers">middle</item>
+        <item name="android:divider">@drawable/mb__messagebar_divider</item>
+        <item name="android:dividerPadding">10dp</item>
+    </style>
+
+</resources>
