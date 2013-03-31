@@ -59,10 +59,10 @@ public class MessageBar {
     }
 
     private void init(View v) {
-        mContainer = v.findViewById(R.id.mb__messageBar);
+        mContainer = v.findViewById(R.id.mbContainer);
         mContainer.setVisibility(View.GONE);
-        mTextView = (TextView) v.findViewById(R.id.mb__messageBarMessage);
-        mButton = (TextView) v.findViewById(R.id.mb__messageBarButton);
+        mTextView = (TextView) v.findViewById(R.id.mbMessage);
+        mButton = (TextView) v.findViewById(R.id.mbButton);
         mButton.setOnClickListener(mButtonListener);
 
         mFadeInAnimation = new AlphaAnimation(0.0f, 1.0f);

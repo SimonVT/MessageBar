@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="mbContainer" type="id" />
+    <item name="mbMessage" type="id" />
+    <item name="mbButton" type="id" />
+</resources>
