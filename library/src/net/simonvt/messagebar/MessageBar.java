@@ -49,8 +49,8 @@ public class MessageBar {
     private AlphaAnimation mFadeOutAnimation;
 
     public MessageBar(Activity activity) {
-        ViewGroup contianer = (ViewGroup) activity.findViewById(android.R.id.content);
-        View v = activity.getLayoutInflater().inflate(R.layout.mb__messagebar, contianer);
+        ViewGroup container = (ViewGroup) activity.findViewById(android.R.id.content);
+        View v = activity.getLayoutInflater().inflate(R.layout.mb__messagebar, container);
         init(v);
     }
 
