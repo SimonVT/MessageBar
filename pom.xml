@@ -10,13 +10,13 @@
     </parent>
 
     <groupId>net.simonvt</groupId>
-    <artifactId>android-messagebar-parent</artifactId>
+    <artifactId>messagebar-parent</artifactId>
     <packaging>pom</packaging>
     <version>1.0.1-SNAPSHOT</version>
 
-    <name>Android MessageBar (Parent)</name>
+    <name>MessageBar (Parent)</name>
     <description>An alternative to the android Toast class, as seen in the GMail app.</description>
-    <url>https://github.com/SimonVT/android-messagebar</url>
+    <url>https://github.com/SimonVT/MessageBar</url>
     <inceptionYear>2012</inceptionYear>
 
     <modules>
@@ -25,9 +25,9 @@
     </modules>
 
     <scm>
-        <url>http://github.com/SimonVT/android-messagebar/</url>
-        <connection>scm:git:git://github.com/SimonVT/android-messagebar.git</connection>
-        <developerConnection>scm:git:git@github.com:SimonVT/android-messagebar.git</developerConnection>
+        <url>http://github.com/SimonVT/MessageBar/</url>
+        <connection>scm:git:git://github.com/SimonVT/MessageBar.git</connection>
+        <developerConnection>scm:git:git@github.com:SimonVT/MessageBar.git</developerConnection>
     </scm>
 
     <licenses>
@@ -40,7 +40,7 @@
 
     <issueManagement>
         <system>GitHub Issues</system>
-        <url>https://github.com/SimonVT/android-messagebar/issues</url>
+        <url>https://github.com/SimonVT/MessageBar/issues</url>
     </issueManagement>
 
     <properties>
