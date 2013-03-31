@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
@@ -124,11 +125,13 @@ public class MessageBar {
         mCurrentMessage = message;
         mTextView.setText(message.mMessage);
         if (message.mActionMessage != null) {
+            mTextView.setGravity(Gravity.LEFT);
             mButton.setVisibility(View.VISIBLE);
             mButton.setText(message.mActionMessage);
 
             mButton.setCompoundDrawablesWithIntrinsicBounds(message.mActionIcon, 0, 0, 0);
         } else {
+            mTextView.setGravity(Gravity.CENTER_VERTICAL);
             mButton.setVisibility(View.GONE);
         }
 
