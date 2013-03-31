@@ -41,9 +41,9 @@ are to be used for showing the message.
 When using this approach, child views with the following id's must be added
 to the passed View.
 
- * mbContainer: The container that holds the message and the button views.
- * mbMessage: A TextView that displays the message.
- * mbButton: A TextView that displays the button text.
+ * `mbContainer`: The container that holds the message and the button views.
+ * `mbMessage`: A TextView that displays the message.
+ * `mbButton`: A TextView that displays the button text.
 
 As an example, this is the default layout that's used when attaching to an Activity.
 
