@@ -17,7 +17,7 @@ Attaching to an activity
 
 This approach requires adding the following attributes to the Activity's theme.
 
-```
+```xml
 <item name="messageBarContainerStyle">@style/MessageBar.Container</item>
 <item name="messageBarTextStyle">@style/MessageBar.Message</item>
 <item name="messageBarButtonStyle">@style/MessageBar.Button</item>
@@ -26,7 +26,7 @@ This approach requires adding the following attributes to the Activity's theme.
 Attaching the MessageBar is then done by passing the Activity to the
 MessageBar constructor.
 
-```
+```java
 mMessageBar = new MessageBar(this);
 ```
 
@@ -47,7 +47,7 @@ to the passed View.
 
 As an example, this is the default layout that's used when attaching to an Activity.
 
-```
+```xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@id/mbContainer"
     style="?attr/messageBarContainerStyle">
@@ -73,7 +73,7 @@ button. When a button is shown, a Parcelable has to be passed that's then return
 via `MessageBar$OnMessageClickListener` if the button is clicked.
 
 Example:
-```
+```java
 mMessageBar.show("This is a message");
 ```
 
