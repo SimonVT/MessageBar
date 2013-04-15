@@ -49,8 +49,8 @@ public class MessageBar {
     private AlphaAnimation mFadeOutAnimation;
 
     public MessageBar(Activity activity) {
-        ViewGroup contianer = (ViewGroup) activity.findViewById(android.R.id.content);
-        View v = activity.getLayoutInflater().inflate(R.layout.mb__messagebar, contianer);
+        ViewGroup container = (ViewGroup) activity.findViewById(android.R.id.content);
+        View v = activity.getLayoutInflater().inflate(R.layout.mb__messagebar, container);
         init(v);
     }
 
@@ -144,7 +144,7 @@ public class MessageBar {
         mHandler.postDelayed(mHideRunnable, HIDE_DELAY);
     }
 
-    private View.OnClickListener mButtonListener = new View.OnClickListener() {
+    private final View.OnClickListener mButtonListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             if (mClickListener != null && mCurrentMessage != null) {
@@ -165,7 +165,7 @@ public class MessageBar {
         mHideRunnable.run();
     }
 
-    private Runnable mHideRunnable = new Runnable() {
+    private final Runnable mHideRunnable = new Runnable() {
         @Override
         public void run() {
             mContainer.startAnimation(mFadeOutAnimation);
@@ -202,13 +202,13 @@ public class MessageBar {
 
     private static class Message implements Parcelable {
 
-        String mMessage;
+        final String mMessage;
 
-        String mActionMessage;
+        final String mActionMessage;
 
-        int mActionIcon;
+        final int mActionIcon;
 
-        Parcelable mToken;
+        final Parcelable mToken;
 
         public Message(String message, String actionMessage, int actionIcon, Parcelable token) {
             mMessage = message;
