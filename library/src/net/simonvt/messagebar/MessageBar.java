@@ -125,13 +125,13 @@ public class MessageBar {
         mCurrentMessage = message;
         mTextView.setText(message.mMessage);
         if (message.mActionMessage != null) {
-            mTextView.setGravity(Gravity.LEFT);
+            mTextView.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
             mButton.setVisibility(View.VISIBLE);
             mButton.setText(message.mActionMessage);
 
             mButton.setCompoundDrawablesWithIntrinsicBounds(message.mActionIcon, 0, 0, 0);
         } else {
-            mTextView.setGravity(Gravity.CENTER_VERTICAL);
+            mTextView.setGravity(Gravity.CENTER);
             mButton.setVisibility(View.GONE);
         }
 
