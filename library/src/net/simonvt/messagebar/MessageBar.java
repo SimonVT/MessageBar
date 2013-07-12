@@ -221,7 +221,7 @@ public class MessageBar {
             mMessage = p.readString();
             mActionMessage = p.readString();
             mActionIcon = p.readInt();
-            mToken = p.readParcelable(null);
+            mToken = p.readParcelable(getClass().getClassLoader());
         }
 
         public void writeToParcel(Parcel out, int flags) {
