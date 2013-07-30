@@ -165,7 +165,7 @@ public class MessageBar {
         mHideRunnable.run();
     }
     
-    public boolean isShowing(){
+    public boolean isShowing() {
         return mShowing;
     }
     
@@ -173,8 +173,8 @@ public class MessageBar {
      * Returns the total number of messages still waiting in the queue to be 
      * shown to the user.
      */
-    public int getMessagesLeft(){
-    	return mMessages.size();
+    public int getMessageCount() {
+        return mMessages.size();
     }
 
     private Runnable mHideRunnable = new Runnable() {
