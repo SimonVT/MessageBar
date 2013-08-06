@@ -21,3 +21,5 @@ samples/*
 !samples/res/
 !samples/AndroidManifest.xml
 !samples/pom.xml
+
+.DS_store
