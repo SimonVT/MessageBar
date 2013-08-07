@@ -11,5 +11,5 @@ buildscript {
 ext.groupId = 'net.simonvt.messagebar'
 
 allprojects {
-    version = '1.0.2-SNAPSHOT'
+    version = '1.0.2'
 }
