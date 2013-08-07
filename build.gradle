@@ -1,0 +1,15 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.5.+'
+    }
+}
+
+ext.groupId = 'net.simonvt.messagebar'
+
+allprojects {
+    version = '1.0.2-SNAPSHOT'
+}

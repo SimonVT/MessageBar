@@ -1,0 +1,111 @@
+apply plugin: 'android-library'
+apply plugin: 'maven'
+apply plugin: 'signing'
+
+android {
+    compileSdkVersion 18
+    buildToolsVersion "18.0.0"
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            res.srcDirs = ['res']
+        }
+    }
+
+    defaultConfig {
+        minSdkVersion 7
+        targetSdkVersion 18
+    }
+}
+
+ext {
+    artifactId = 'messagebar'
+}
+
+signing {
+    sign configurations.archives
+}
+
+configurations {
+    archives {
+        extendsFrom configurations.default
+    }
+}
+
+task androidJavadocs(type: Javadoc) {
+    source = android.sourceSets.main.allJava
+}
+
+task androidJavadocsJar(type: Jar) {
+    classifier = 'javadoc'
+    basename = project.artifactId
+    from androidJavadocs.destinationDir
+}
+
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    basename = project.artifactId
+    from android.sourceSets.main.allSource 
+} 
+
+artifacts {
+    archives androidSourcesJar
+    archives androidJavadocsJar
+}
+
+uploadArchives {
+    configuration = configurations.archives
+
+    repositories.mavenDeployer {
+        beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+        repository(url: sonatypeRepo) {
+            authentication(userName: sonatypeUsername, password: sonatypePassword)
+        }
+        
+        pom.groupId = parent.ext.groupId
+        pom.artifactId = project.ext.artifactId
+        pom.version = parent.version
+
+        pom.project {
+            name 'MessageBar'
+            packaging 'aar'
+            description 'An alternative to the android Toast class, as seen in the GMail app.'
+            url 'https://github.com/SimonVT/MessageBar'
+
+            scm {
+                url 'http://github.com/SimonVT/MessageBar/'
+                connection 'scm:git:git://github.com/SimonVT/MessageBar.git'
+                developerConnection 'scm:git:git@github.com:SimonVT/MessageBar.git'
+            }
+
+            licenses {
+                license {
+                    name 'Apache License Version 2.0'
+                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    distribution 'repo'
+                }
+            }
+
+            issueManagement {
+                system 'GitHub Issues'
+                url 'https://github.com/SimonVT/MessageBar/issues'
+            }
+
+            developers {
+                developer {
+                    id 'simonvt'
+                    name 'Simon Vig Therkildsen'
+                    email 'simonvt@gmail.com'
+                    url 'http://simonvt.net'
+                    timezone '1'
+                    roles {
+                        role 'developer'
+                    }
+                }
+            }
+        }
+    }
+}
