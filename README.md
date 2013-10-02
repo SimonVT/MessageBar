@@ -67,10 +67,10 @@ The MessageBar is then attached by passing a parent view to the constructor.
 Showing a message
 -----------------
 
-A message is shown simple by calling `MessageBar#show(...)`. A few methods are
-available here. It can either simply show a message or show a message and a
+A message is shown simply by calling `MessageBar.show(...)`. A few different methods are
+available here. It can either show a simple message or show a message and a
 button. When a button is shown, a Parcelable has to be passed that's then returned
-via `MessageBar$OnMessageClickListener` if the button is clicked.
+via the `MessageBar.OnMessageClickListener` interface if the button is clicked.
 
 Example:
 ```java
