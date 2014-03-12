@@ -21,17 +21,17 @@ public class MessageBar {
         void onMessageClick(Parcelable token);
     }
 
-	public interface OnMessageDismissListener {
+    public interface OnMessageDismissListener {
 
-		void onMessageDismiss(Parcelable token);
-	}
+        void onMessageDismiss(Parcelable token);
+    }
 
     private static final String STATE_MESSAGES = "net.simonvt.messagebar.MessageBar.messages";
     private static final String STATE_CURRENT_MESSAGE = "net.simonvt.messagebar.MessageBar.currentMessage";
 
     private static final int ANIMATION_DURATION = 600;
 
-    private static final int HIDE_DELAY = 5000;
+    private int mHideDelay = 5000;
 
     private View mContainer;
 
@@ -47,7 +47,7 @@ public class MessageBar {
 
     private OnMessageClickListener mClickListener;
 
-	private OnMessageDismissListener mDismissListener;
+    private OnMessageDismissListener mDismissListener;
 
     private Handler mHandler;
 
@@ -82,8 +82,8 @@ public class MessageBar {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-				if (mDismissListener != null && mCurrentMessage != null)
-					mDismissListener.onMessageDismiss(mCurrentMessage.mToken);
+                if (mDismissListener != null && mCurrentMessage != null)
+                    mDismissListener.onMessageDismiss(mCurrentMessage.mToken);
 
                 Message nextMessage = mMessages.poll();
 
@@ -151,7 +151,7 @@ public class MessageBar {
             mFadeInAnimation.setDuration(ANIMATION_DURATION);
         }
         mContainer.startAnimation(mFadeInAnimation);
-        mHandler.postDelayed(mHideRunnable, HIDE_DELAY);
+        mHandler.postDelayed(mHideRunnable, getHideDelay());
     }
 
     private final View.OnClickListener mButtonListener = new View.OnClickListener() {
@@ -170,9 +170,9 @@ public class MessageBar {
         mClickListener = listener;
     }
 
-	public void setOnDismissListener(OnMessageDismissListener listener) {
-		mDismissListener = listener;
-	}
+    public void setOnDismissListener(OnMessageDismissListener listener) {
+        mDismissListener = listener;
+    }
 
     public void clear() {
         mMessages.clear();
@@ -212,6 +212,14 @@ public class MessageBar {
         b.putParcelableArray(STATE_MESSAGES, messages);
 
         return b;
+    }
+    
+    public int getHideDelay() {
+        return mHideDelay;
+    }
+
+    public void setHideDelay(int hideDelay) {
+        mHideDelay = hideDelay;
     }
 
     private static class Message implements Parcelable {
