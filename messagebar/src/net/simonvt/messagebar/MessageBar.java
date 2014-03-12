@@ -21,6 +21,11 @@ public class MessageBar {
         void onMessageClick(Parcelable token);
     }
 
+	public interface OnMessageDismissListener {
+
+		void onMessageDismiss(Parcelable token);
+	}
+
     private static final String STATE_MESSAGES = "net.simonvt.messagebar.MessageBar.messages";
     private static final String STATE_CURRENT_MESSAGE = "net.simonvt.messagebar.MessageBar.currentMessage";
 
@@ -41,6 +46,8 @@ public class MessageBar {
     private boolean mShowing;
 
     private OnMessageClickListener mClickListener;
+
+	private OnMessageDismissListener mDismissListener;
 
     private Handler mHandler;
 
@@ -75,6 +82,9 @@ public class MessageBar {
 
             @Override
             public void onAnimationEnd(Animation animation) {
+				if (mDismissListener != null && mCurrentMessage != null)
+					mDismissListener.onMessageDismiss(mCurrentMessage.mToken);
+
                 Message nextMessage = mMessages.poll();
 
                 if (nextMessage != null) {
@@ -159,6 +169,10 @@ public class MessageBar {
     public void setOnClickListener(OnMessageClickListener listener) {
         mClickListener = listener;
     }
+
+	public void setOnDismissListener(OnMessageDismissListener listener) {
+		mDismissListener = listener;
+	}
 
     public void clear() {
         mMessages.clear();
